@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "evaluate.py", line 399, in <module>
+    main(args)
+  File "evaluate.py", line 300, in main
+    model.load_state_dict(torch.load(args.ckpt))
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1223, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for PointPillarsLaterCenterXyz64ch:
+	size mismatch for pillar_encoder.conv.weight: copying a param with shape torch.Size([64, 6, 1]) from checkpoint, the shape in current model is torch.Size([61, 6, 1]).
+	size mismatch for pillar_encoder.bn.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).
+	size mismatch for pillar_encoder.bn.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).
+	size mismatch for pillar_encoder.bn.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).
+	size mismatch for pillar_encoder.bn.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).
+	size mismatch for backbone.multi_blocks.0.0.weight: copying a param with shape torch.Size([67, 67, 3, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3, 3]).
+	size mismatch for backbone.multi_blocks.0.1.weight: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.1.bias: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.1.running_mean: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.1.running_var: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.3.weight: copying a param with shape torch.Size([67, 67, 3, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3, 3]).
+	size mismatch for backbone.multi_blocks.0.4.weight: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.4.bias: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.4.running_mean: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.4.running_var: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.6.weight: copying a param with shape torch.Size([67, 67, 3, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3, 3]).
+	size mismatch for backbone.multi_blocks.0.7.weight: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.7.bias: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.7.running_mean: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.7.running_var: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.9.weight: copying a param with shape torch.Size([67, 67, 3, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3, 3]).
+	size mismatch for backbone.multi_blocks.0.10.weight: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.10.bias: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.10.running_mean: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.0.10.running_var: copying a param with shape torch.Size([67]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for backbone.multi_blocks.1.0.weight: copying a param with shape torch.Size([128, 67, 3, 3]) from checkpoint, the shape in current model is torch.Size([128, 64, 3, 3]).
+	size mismatch for neck.decoder_blocks.0.0.weight: copying a param with shape torch.Size([67, 128, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 128, 1, 1]).

@@ -7,6 +7,7 @@ from model.anchors import Anchors, anchor_target, anchors2bboxes
 from ops import Voxelization, nms_cuda
 from utils import limit_period
 
+# from pytorch_memlab import profile
 
 class PillarLayer(nn.Module):
     def __init__(self, voxel_size, point_cloud_range, max_num_points, max_voxels):
@@ -56,7 +57,8 @@ class PillarEncoder(nn.Module):
 
         self.conv = nn.Conv1d(in_channel, out_channel, 1, bias=False)
         self.bn = nn.BatchNorm1d(out_channel, eps=1e-3, momentum=0.01)
-
+    
+    # @profile
     def forward(self, pillars, coors_batch, npoints_per_pillar):
         '''
         pillars: (p1 + p2 + ... + pb, num_points, c), c = 4
@@ -74,6 +76,7 @@ class PillarEncoder(nn.Module):
 
         # 3. encoder
         features = torch.cat([pillars, offset_pt_center, x_offset_pi_center, y_offset_pi_center], dim=-1) # (p1 + p2 + ... + pb, num_points, 9)
+        
         features[:, :, 0:1] = x_offset_pi_center # tmp
         features[:, :, 1:2] = y_offset_pi_center # tmp
         # In consitent with mmdet3d. 
@@ -88,7 +91,7 @@ class PillarEncoder(nn.Module):
 
         # 5. embedding
         features = features.permute(0, 2, 1).contiguous() # (p1 + p2 + ... + pb, 9, num_points)
-        features = F.relu(self.bn(self.conv(features)))  # (p1 + p2 + ... + pb, out_channels, num_points)
+        features = F.relu(self.bn(self.conv(features)))  # (p1 + p2 + ... + pb, out_channels, num_points)   PointNet使っている部分3つのやつ(conv, bn,relu)で
         pooling_features = torch.max(features, dim=-1)[0] # (p1 + p2 + ... + pb, out_channels)
 
         # 6. pillar scatter
@@ -232,7 +235,7 @@ class PointPillars(nn.Module):
                                         max_voxels=max_voxels)
         self.pillar_encoder = PillarEncoder(voxel_size=voxel_size, 
                                             point_cloud_range=point_cloud_range, 
-                                            in_channel=9, 
+                                            in_channel=9,
                                             out_channel=64)
         self.backbone = Backbone(in_channel=64, 
                                  out_channels=[64, 128, 256], 

@@ -1,0 +1,9 @@
+
+Predicting and Formatting the results.
+  0%|                                                                                                                                              | 0/3769 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "evaluate_test.py", line 408, in <module>
+    main(args)
+  File "evaluate_test.py", line 333, in main
+    tf.config.experimental.reset_memory_stats
+NameError: name 'tf' is not defined

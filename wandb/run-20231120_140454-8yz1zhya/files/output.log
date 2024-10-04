@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "evaluate.py", line 399, in <module>
+    main(args)
+  File "evaluate.py", line 300, in main
+    model.load_state_dict(torch.load(args.ckpt))
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1223, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for PointPillarsLaterCenterXyz64ch:
+	size mismatch for pillar_encoder.conv.weight: copying a param with shape torch.Size([64, 9, 1]) from checkpoint, the shape in current model is torch.Size([61, 6, 1]).
+	size mismatch for pillar_encoder.bn.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).
+	size mismatch for pillar_encoder.bn.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).
+	size mismatch for pillar_encoder.bn.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).
+	size mismatch for pillar_encoder.bn.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([61]).

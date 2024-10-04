@@ -6,7 +6,24 @@ import pdb
 
 from utils import setup_seed
 from dataset import Kitti, get_dataloader
+
 from model import PointPillars
+#from model import PointPillarsNoCenterXyz as PointPillars
+#from model import PointPillarsLaterCenterXyz as PointPillars
+# from model import PointPillarsLaterCenterXyz64ch as PointPillars
+# from model import PointPillars_12ch as PointPillars
+
+# from model import PointPillarsAddZLater as PointPillars
+# from model import PointPillarsAddZFormer as PointPillars
+
+# from model import PointPillarsRVarLater as PointPillars
+# from model import PointPillarsRVarFormer as PointPillars
+
+# from model import PointPillarsAddZRLater as PointPillars
+# from model import PointPillarsLessPtZAddZLater as PointPillars
+
+# from model import PointPillarsNormalFormer as PointPillars
+
 from loss import Loss
 from torch.utils.tensorboard import SummaryWriter
 
@@ -198,7 +215,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Configuration Parameters')
-    parser.add_argument('--data_root', default='/mnt/ssd1/lifa_rdata/det/kitti', 
+    parser.add_argument('--data_root', default='/home/data', 
                         help='your data root for kitti')
     parser.add_argument('--saved_path', default='pillar_logs')
     parser.add_argument('--batch_size', type=int, default=6)
@@ -207,7 +224,7 @@ if __name__ == '__main__':
     parser.add_argument('--init_lr', type=float, default=0.00025)
     parser.add_argument('--max_epoch', type=int, default=160)
     parser.add_argument('--log_freq', type=int, default=8)
-    parser.add_argument('--ckpt_freq_epoch', type=int, default=20)
+    parser.add_argument('--ckpt_freq_epoch', type=int, default=5)
     parser.add_argument('--no_cuda', action='store_true',
                         help='whether to use cuda')
     args = parser.parse_args()
